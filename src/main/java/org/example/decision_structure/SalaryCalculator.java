@@ -11,7 +11,7 @@ import java.util.Scanner;
 // Salespeople who exceed 10 sales get an additional bonus of $250.
 public class SalaryCalculator {
 
-    // type "main"
+    // Tips: type "main" for `public static void main(String[] args)`
     public static void main(String[] args) {
         double salary = 1000;
         double bonus = 250;
