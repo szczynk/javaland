@@ -47,6 +47,26 @@ import java.util.Scanner;
 // do not conflict with variables of the same name in other methods.
 //
 //
+// introducing Java's `local variable type inference`
+// allowing the use of 'var' to infer the data type of
+// variable based on its assigned value.
+//
+// Instead of explicitly declaring a variable, like `boolean isWaterWet = true;`,
+// you can use var, like `var isWaterWet = true;`.
+//
+// 'var' does not make Java dynamically typed; it still retains static typing.
+//
+// and it can only be used for `local` variables, not `global` ones.
+//
+// It is useful for situations where the data type is not known beforehand,
+// like when calling methods that return values of unspecified types.
+//
+// Java will show the inferred data type when hovering over a 'var' variable.
+//
+// It is essential to ensure that the inferred type matches the required type
+// for certain operations (e.g., int vs. double).
+//
+//
 // problem:
 // Write a method that asks a user for their name,
 // then another method that greets the user by name.
