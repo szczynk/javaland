@@ -21,7 +21,7 @@ public class GrossPayCalculator {
         // and save to variable that we can use
         int hours = scanner.nextInt();
 
-        // type "sout"
+        // Tips: type "sout" for `System.out.println();`
         System.out.println("What is your hourly pay?");
 
         double rate = scanner.nextDouble();
