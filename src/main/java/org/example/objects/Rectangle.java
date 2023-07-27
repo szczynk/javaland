@@ -21,6 +21,11 @@ package org.example.objects;
 //
 // The "this" keyword is used to differentiate between local and global variables in the class.
 //
+// convention:
+// - field
+// - constructor
+// - method
+//
 //
 // problem:
 // Write a class that describes the fields and methods of a rectangle.
@@ -29,6 +34,39 @@ public class Rectangle {
     protected double width;
     protected int sides = 4;
 
+    // Constructors are part of classes and are used to initialize objects before use.
+    //
+    // Constructors are `special` methods -they look like a method but they not really a method-,
+    // with the same name as the class and no return type.
+    //
+    // Constructors can have different types, such as:
+    // - default constructors   -> do not take any arguments and set default values for the fields.
+    // - all-args constructors  -> take values for all the fields in the class and pass it during
+    //                             object creation.
+    //
+    // by default in Java, the default constructor is already there.
+    // if you wanted to actually do something, then go ahead and write an explicit one.
+    // So you're really just exposing something that exists under the hood to manipulate it
+    // and put in a body there.
+    //
+    // It is best to use setter methods to set field values instead of directly manipulating
+    // them in the constructor.
+    //
+    // "static" classes do not have default constructors because they do not require sets up
+    // state for that object, the initial values.
+    public Rectangle() {
+        setLength(0);
+        setWidth(0);
+    }
+
+    public Rectangle(double length, double width) {
+        setLength(length);
+        setWidth(width);
+    }
+
+    public void print() {
+        System.out.println("I am a rectangle");
+    }
 
     public double calculatePerimeter() {
         return (2 * length) + (2 * width);
