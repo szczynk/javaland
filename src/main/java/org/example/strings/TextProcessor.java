@@ -18,6 +18,32 @@ public class TextProcessor {
     public static void main(String[] args) {
         countWords("I love Java");
         reverseString("Hello World");
+        addSpaces("Hello!It'sMeSzczynk");
+    }
+
+    // problems:
+    // Write a method that adds spaces to a jumbled String where all words
+    // were written together with no spaces. Each new word begins with a
+    // capital letter.
+    private static void addSpaces(String text) {
+        // StringBuilder
+        //
+        // Used to create a mutable `String` that can be modified
+        //
+        // allows for inserting, deleting, and modifying characters in a string.
+        StringBuilder modifiedText = new StringBuilder(text);
+
+        for (int i = 0; i < modifiedText.length(); i++) {
+            // If not the first character and the character is uppercase
+            if (i != 0 && Character.isUpperCase(modifiedText.charAt(i))) {
+                // insert a space before uppercase character
+                // using the `insert()` method
+                modifiedText.insert(i, " ");
+                i++;
+            }
+        }
+
+        System.out.println(modifiedText);
     }
 
     // problem:
@@ -36,8 +62,9 @@ public class TextProcessor {
 
             // The `charAt()` method can be used to access
             // individual characters in the string by their index.
-            System.out.println(text.charAt(i));
+            System.out.print(text.charAt(i));
         }
+        System.out.println();
     }
 
     // problem:
