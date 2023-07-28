@@ -11,9 +11,33 @@ package org.example.strings;
 //
 // Some methods in the String class are static,
 // while others are non-static (part of the object).
+//
+// Strings in Java are "immutable",
+// meaning they cannot be modified directly.
 public class TextProcessor {
     public static void main(String[] args) {
         countWords("I love Java");
+        reverseString("Hello World");
+    }
+
+    // problem:
+    // Write a method that prints a given String backwards.
+    // For example, if given “pots”, it prints “stop”.
+    private static void reverseString(String text) {
+        // The `length()` method can be used to find
+        // the number of characters in the string.
+        //
+        // a for loop to loop through the characters of the string in reverse order.
+        // Start at the end of the string and decrement the index.
+        //
+        // The last index of a string is equal to
+        // its length minus one (length() - 1).
+        for (int i = text.length() - 1; i >= 0; i--) {
+
+            // The `charAt()` method can be used to access
+            // individual characters in the string by their index.
+            System.out.println(text.charAt(i));
+        }
     }
 
     // problem:
