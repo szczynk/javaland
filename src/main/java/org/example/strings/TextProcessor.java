@@ -19,6 +19,35 @@ public class TextProcessor {
         countWords("I love Java");
         reverseString("Hello World");
         addSpaces("Hello!It'sMeSzczynk");
+        textBlockExample();
+    }
+
+    // Text Blocks
+    //
+    // Used to work with multi-line Strings
+    //
+    // Before text blocks, working with multi-line strings was cumbersome,
+    // involving new line characters, plus signs, and escaping quotes.
+    //
+    // Text blocks are defined using three quotation marks `"""`
+    // to open and close the block.
+    //
+    // Text blocks work similarly to strings, and you can utilize them with
+    // methods that expect strings.
+    //
+    // The preferred convention is to start the block on a new line and
+    // add text on separate lines within the block.
+    private static void textBlockExample() {
+        String text = """
+                This is a multi-line text block
+                in Java. It allows you to write
+                long strings without the need
+                for explicit new line characters
+                or escape sequences.
+                """;
+
+        System.out.println();
+        System.out.println(text);
     }
 
     // problems:
