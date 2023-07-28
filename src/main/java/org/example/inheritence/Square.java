@@ -44,6 +44,31 @@ public class Square extends Rectangle {
         return sides * length;
     }
 
+    // Overload Inherited Method.
+    //
+    // subclasses can overload methods that are inherited from a superclass.
+    //
+    // Overloading:
+    // methods with the same name as those in the superclass,
+    // but they must have different parameter lists.
+    //
+    // Overriding vs. Overloading:
+    // Overriding occurs when a subclass provides a new implementation (body)
+    // for a method inherited from the superclass,
+    // while overloading involves adding methods with the same name but
+    // different parameter lists
+    // in the same class or between a parent and subclass.
+    //
+    // Constructors should be accessible to subclasses,
+    // so they are typically made public or protected
+    // to allow inheritance and method overloading in subclasses.
+    //
+    // overloading a method in a subclass *increases* its scope,
+    // allowing it to be called on objects of both the subclass and its parent class,
+    // providing more versatility in using the method.
+    //
+    // problem:
+    // Create a `print()` method in superclass then overload it in subclass
     public void print(String what) {
         System.out.println("I am a " + what);
     }
