@@ -30,6 +30,16 @@ import org.example.objects.Rectangle;
 //   They are not accessible from any other class, including subclasses or classes in
 //   the same package.
 //
+// Limited Access in Inheritance
+//
+// - Private fields and constructors are not inherited.
+// - Members with public and protected access modifiers are inherited,
+//   but members with private access modifiers are not.
+// - Final methods and final fields are inherited but cannot be overridden in the subclass.
+// - Access modifiers (public, protected, private) affect the accessibility of inherited members.
+// - When overriding a method in the subclass, the access modifier must be
+//   the same or less strict than the superclass' method. It cannot be more strict.
+//
 //
 // problem:
 // Create a Square class that inherits from Rectangle, and override its
