@@ -45,12 +45,14 @@ public class Zoo {
         Dog rocky = new Dog();
         rocky.fetch();
         rocky.makeSound();
+        feed(rocky);
 
         System.out.println("----------------------------");
         System.out.println("-sasha make sound as a dog-");
 
         Animal sasha = new Dog(); // Up-casting
         sasha.makeSound();
+        feed(sasha);
 
         System.out.println("----------------------------");
         System.out.println("-sasha make sound as a cat-");
@@ -74,10 +76,16 @@ public class Zoo {
         // - is an explicit type cast and can be potentially unsafe
         //   if the object being referred to is not an instance of the target subclass.
         //
+        // If you want to store the type-casted object permanently,
+        // you need to do so explicitly.
+        //
+        // Changes made to a stored type-casted object do not affect
+        // the original object or vice versa.
+        //
         // Care should be taken when using type casting as:
         // - should only be used when absolutely necessary,
         //   and alternatives should be considered to avoid potential issues.
-        // - it can throw `ClassCastException` at runtime if the casting is not valid.
+        // - it can throw `ClassCastException` exception at runtime if the casting is not valid.
         //   e.g. you can not do this:
         //
         //   ```java
@@ -88,6 +96,38 @@ public class Zoo {
         //
         // problem:
         // Downcast sasha to enable her to scratch her itch.
-        ((Cat) sasha).scratch(); // `(Cat) sasha` is Down-casting
+        ((Cat) sasha).scratch(); // `(Cat) sasha` is temporary Down-casting
+
+        // Cat sashaTheCat = (Cat) sasha; Explicitly storing the type-casted object
+
+        feed(sasha);
+    }
+
+    // instanceof Operator
+    //
+    // allows you to check if an object is an instance of a specific class
+    // and return it as boolean
+    //
+    // we can use the `instanceof` operator to check before performing the down-casting
+    // to ensure safe down-casting and avoid the `ClassCastException` exception,
+    //
+    // The `instanceof` operator can be used in logical conditions
+    // to perform different actions based on the type of the object.
+    //
+    // Storing a reference to a type-casted object does not create a new object;
+    // it's only a temporary casting for access purposes.
+    //
+    // The use of "var" to declare variables with type-casting is possible
+    // but should be used with caution as it can lead to potential issues.
+    //
+    //
+    // problem:
+    // Create a method that feeds any animal the type of food it eats.
+    private static void feed(Animal animal) {
+        if (animal instanceof Dog) {
+            System.out.println("here's your dog food");
+        } else if (animal instanceof Cat) {
+            System.out.println("here's your cat food");
+        }
     }
 }
