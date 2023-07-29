@@ -37,8 +37,7 @@ package org.example.polymorphism;
 //
 // problem:
 // Transforming Animals.
-// Demonstrate an example of polymorphism between
-// an Animal, Dog, and Cat
+// Demonstrate an example of polymorphism between an Animal, Dog, and Cat
 public class Zoo {
     public static void main(String[] args) {
         System.out.println("-rocky fetch and make sound-");
@@ -50,7 +49,7 @@ public class Zoo {
         System.out.println("----------------------------");
         System.out.println("-sasha make sound as a dog-");
 
-        Animal sasha = new Dog();
+        Animal sasha = new Dog(); // Up-casting
         sasha.makeSound();
 
         System.out.println("----------------------------");
@@ -59,6 +58,36 @@ public class Zoo {
         sasha = new Cat();
         sasha.makeSound();
 
-
+        // Type Casting.
+        //
+        // the action of converting an object’s type into a different type.
+        //
+        // It can be implicit or explicit and can be performed
+        // upward or downward on the inheritance tree.
+        //
+        // Up-casting:
+        // - converting an object of a subclass as an object of its superclass
+        // - is an implicit type casting and does not require any special syntax.
+        //
+        // Down-casting:
+        // - converting an object of a superclass as an object of its subclass
+        // - is an explicit type cast and can be potentially unsafe
+        //   if the object being referred to is not an instance of the target subclass.
+        //
+        // Care should be taken when using type casting as:
+        // - should only be used when absolutely necessary,
+        //   and alternatives should be considered to avoid potential issues.
+        // - it can throw `ClassCastException` at runtime if the casting is not valid.
+        //   e.g. you can not do this:
+        //
+        //   ```java
+        //      Animal sasha = new Cat();
+        //      Dog sashaTheDog = (Dog) sasha;
+        //   ```
+        //
+        //
+        // problem:
+        // Downcast sasha to enable her to scratch her itch.
+        ((Cat) sasha).scratch(); // `(Cat) sasha` is Down-casting
     }
 }
