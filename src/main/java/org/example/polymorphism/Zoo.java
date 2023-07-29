@@ -129,5 +129,25 @@ public class Zoo {
         } else if (animal instanceof Cat) {
             System.out.println("here's your cat food");
         }
+
+        // instanceof Pattern Matching
+        //
+        // introduced in Java 16 to simplify the common usage of
+        // the instanceof operator along with type casting.
+        //
+        // allows you to perform both the type-checking and type-casting
+        // in a more concise and readable way.
+        //
+        // e.g.
+        // if(animal instanceof Dog sashaTheDog) {
+        //     sashaTheDog.fetch();
+        //     System.out.print(" - from `feed()` method\n");
+        // }
+        // //same as:
+        // if(animal instanceof Dog){
+        //     Dog sashaTheDog = (Dog)animal;
+        //     sashaTheDog.fetch();
+        //     System.out.print(" - from `feed()` method\n");
+        // }
     }
 }
