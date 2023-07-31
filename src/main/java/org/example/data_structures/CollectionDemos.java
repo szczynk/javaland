@@ -1,7 +1,6 @@
 package org.example.data_structures;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 // Data Structures
 //
@@ -15,6 +14,58 @@ import java.util.Set;
 public class CollectionDemos {
     public static void main(String[] args) {
         setDemo();
+        System.out.println();
+        listDemo();
+        System.out.println();
+    }
+
+    // List
+    //
+    // are ordered elements accessible by position
+    //
+    // allow duplicates
+    //
+    // can be modified, and elements can be added or removed at specific positions
+    // using methods like `add`, `remove`, and `set`.
+    //
+    // allow access to elements using their indexes. The index starts from 0.
+    //
+    // To create a list in Java, you can use the `ArrayList` class,
+    // which implements the `List` interface from the `java.util package`.
+    //
+    //
+    // problem:
+    // Create a List of fruit
+    private static void listDemo() {
+        List<String> fruits = new ArrayList();
+
+        fruits.add("apple");
+        fruits.add("lemon");
+        fruits.add("banana");
+        fruits.add("orange");
+
+        System.out.println(fruits);
+
+        fruits.set(2, "grape");
+        fruits.add("lemon");
+        fruits.remove("lemon"); // remove first found
+        fruits.remove(3);
+
+        // The method fruits.get(index) allows accessing an element
+        // at a specific index in the list.
+        System.out.println("index 2: " + fruits.get(2));
+
+        // The method fruits.indexOf(object) returns the index of the first
+        // occurrence of the specified object in the list.
+        System.out.println("index of grape: " + fruits.indexOf("grape"));
+
+        // The method fruits.lastIndexOf(object) returns the index of the last
+        // occurrence of the specified object in the list.
+        System.out.println("last index of lemon: " + fruits.lastIndexOf("lemon"));
+
+        // An ArrayList can be created using the List.of method,
+        // creating an immutable list that cannot be modified.
+        List moreFruits = List.of("cherry", "plum"); // immutable
     }
 
     // Set
@@ -26,6 +77,7 @@ public class CollectionDemos {
     // are suitable when the order of elements doesn't matter, and uniqueness is essential.
     //
     // To create a set, you can use classes like `HashSet` from the `java.util package`.
+    //
     //
     // problem:
     // Create a Set of fruit
