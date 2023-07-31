@@ -17,6 +17,45 @@ public class CollectionDemos {
         System.out.println();
         listDemo();
         System.out.println();
+        queueDemo();
+        System.out.println();
+    }
+
+    // Queue.
+    //
+    // are ordered elements that are processed in the order
+    // in which they are added
+    //
+    // follow the "first in, first out" (FIFO) processing
+    //
+    // can be implemented using a linked list data structure in Java.
+    //
+    // can contain duplicate elements.
+    //
+    //
+    // problem:
+    // Create a Queue of fruit
+    private static void queueDemo() {
+        Queue fruits = new LinkedList();
+
+        // Elements can be added to the "end of the queue" using
+        // the "add" method
+        fruits.add("apple");
+        fruits.add("lemon");
+        fruits.add("banana");
+        fruits.add("orange");
+        fruits.add("lemon");
+
+        // The "remove" method removes the first element from the queue.
+        // returns the `removed` object, while most other removes in queues return void.
+        var removed = fruits.remove();
+        System.out.println("removed: " + removed);
+
+        // The "peek" method allows viewing the first element in the queue
+        // without removing it.
+        System.out.println("head of queue: " + fruits.peek());
+
+        System.out.println(fruits);
     }
 
     // List
