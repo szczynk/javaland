@@ -57,6 +57,36 @@ import java.util.*;
 // If a specific data type is not specified for a collection (i.e., using raw types),
 // the compiler may issue warnings about using a generic object (`Object` type) and
 // suggest adding type specifications.
+//
+// ==============================
+//
+// Iterating with forEach
+//
+// built-in convenience or efficient method to iterate over collections
+//
+// It is available for every collection type, including lists and maps.
+//
+// The syntax for using forEach with a list is `list.forEach(element -> { /* action */ });`
+// For maps, the syntax is `map.forEach((key, value) -> { /* action */ });`.
+//
+// Lambda expressions are used inside the `forEach` method
+// to specify the action to be performed
+// on each element or key-value pair.
+//
+// Lambda expressions in this context are similar to anonymous functions
+// and allow for functional programming capabilities.
+//
+// *Method references* are another syntactic shortcut for using `forEach`.
+// They are used when the lambda expression contains only a single method call,
+// providing a cleaner way to write the code.
+//
+// When using *method references*, the syntax is `ClassName::methodName`.
+//
+// *Method references* work for both static and non-static methods.
+//
+// The forEach method is a preferred approach for iterating over collections
+// compared to traditional methods like iterators or enhanced for loops
+// due to its simplicity and readability.
 public class CollectionDemos {
     public static void main(String[] args) {
         setDemo();
@@ -120,6 +150,13 @@ public class CollectionDemos {
         for (Map.Entry calorieInfo : fruitCalories.entrySet()) {
             System.out.println(calorieInfo.getKey() + " : " + calorieInfo.getValue());
         }
+
+        // Iterating with forEach
+        //
+        //
+        // problem:
+        // Use forEach to print elements of the fruit Map
+        fruitCalories.forEach((k, v) -> System.out.println(k + " : " + v));
 
         System.out.println(fruitCalories);
 
@@ -212,6 +249,22 @@ public class CollectionDemos {
         for (String fruit : fruits) {
             System.out.println(fruit);
         }
+
+        // Iterating with forEach
+        //
+        //
+        // problem:
+        // Use forEach to print elements of the fruit list
+        fruits.forEach(f -> System.out.println(f));
+        fruits.forEach(System.out::println); // alternative - method reference
+
+        // multiple statement
+        fruits.forEach(f -> {
+            int idx = fruits.indexOf(f);
+            f = "fruit: " + f;
+
+            System.out.println("index: " + idx + ", Fruits: " + f);
+        });
 
 
         System.out.println(fruits);
