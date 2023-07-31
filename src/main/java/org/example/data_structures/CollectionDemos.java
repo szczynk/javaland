@@ -30,6 +30,33 @@ import java.util.*;
 //
 // While using iterators with maps may be effective,
 // there are more efficient ways to work with maps.
+//
+// ==============================
+//
+// Iterating with Enhanced For Loop
+//
+// Enhanced for loop can be used to loop through collections in Java,
+// providing a simplified and more readable syntax.
+//
+// To use the enhanced for loop, the data type of the collection should be *specified*
+// in angle brackets (e.g., List<String> for a list of strings).
+//
+// The enhanced for loop works for various types of collections,
+// including lists, sets, and queues.
+//
+// For maps, `entrySet()` provides a set of key-value pairs (`Map.Entry`)
+// that can be accessed during iteration.
+//
+// For maps, the enhanced for loop uses `Map.Entry` as the data type
+// and iterates through `mapName.entrySet()`.
+//
+// Collections can only hold *objects*, not primitive data types,
+// so *wrapper classes like `Integer` should be used*
+// to store primitive values in collections.
+//
+// If a specific data type is not specified for a collection (i.e., using raw types),
+// the compiler may issue warnings about using a generic object (`Object` type) and
+// suggest adding type specifications.
 public class CollectionDemos {
     public static void main(String[] args) {
         setDemo();
@@ -83,6 +110,15 @@ public class CollectionDemos {
         while (i.hasNext()) {
             Map.Entry entry = (Map.Entry) i.next();
             System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+
+        // Iterating with Enhanced For Loop over Map
+        //
+        //
+        // problem:
+        // Use Enhanced For loop to iterate over Map
+        for (Map.Entry calorieInfo : fruitCalories.entrySet()) {
+            System.out.println(calorieInfo.getKey() + " : " + calorieInfo.getValue());
         }
 
         System.out.println(fruitCalories);
@@ -163,12 +199,22 @@ public class CollectionDemos {
         fruits.add("banana");
         fruits.add("orange");
 
-        System.out.println(fruits);
-
         fruits.set(2, "grape");
         fruits.add("lemon");
         fruits.remove("lemon"); // remove first found
         fruits.remove(3);
+
+        // Iterating with Enhanced For Loop over List
+        //
+        //
+        // problem:
+        // Use Enhanced For loop to iterate over List
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+
+
+        System.out.println(fruits);
 
         // The method fruits.get(index) allows accessing an element
         // at a specific index in the list.
