@@ -15,10 +15,62 @@ public class CollectionDemos {
     public static void main(String[] args) {
         setDemo();
         System.out.println();
+
         listDemo();
         System.out.println();
+
         queueDemo();
         System.out.println();
+
+        mapDemo();
+        System.out.println();
+    }
+
+    // Map
+    // unordered unique key-value pairs
+    //
+    // do not inherit from the Collection interface
+    // but are still considered part of Java's collections framework.
+    //
+    // take objects as keys and values. Keys must be unique, and values can be repeated.
+    //
+    //
+    // problem:
+    // Create a Map of fruit
+    private static void mapDemo() {
+        Map<String, Integer> fruitCalories = new HashMap();
+
+        // To add elements to a map,
+        // use the "put" method, specifying the key-value pair.
+        //
+        // if a key is already present in the map,
+        // "put" method will replace an existing value
+        fruitCalories.put("apple", 95);
+        fruitCalories.put("lemon", 20);
+        fruitCalories.put("banana", 105);
+        fruitCalories.put("orange", 45);
+
+        // To avoid accidentally overwriting values, use the "putIfAbsent" method,
+        // which checks for the existence of the key before adding it.
+        fruitCalories.putIfAbsent("lemon", 17);
+
+        // To remove an entry from the map, use the "remove" method, providing the key.
+        fruitCalories.remove("lemon");
+
+        System.out.println(fruitCalories);
+
+        // Retrieving a value from the map is done by using the "get" method, providing the key.
+        System.out.println("banana calories: " + fruitCalories.get("banana"));
+
+        // The "containsKey" method allows checking if a specific key exists in the map
+        System.out.println("contain orange? " + fruitCalories.containsKey("orange"));
+
+        // Immutable maps can be created using the "Map.of" method,
+        // but they cannot be modified after creation.
+        Map immutableFruitCalories = Map.of(
+                "apple", 95,
+                "lemon", 20
+        );
     }
 
     // Queue.
