@@ -11,6 +11,25 @@ import java.util.*;
 // Java's collections framework provides interfaces, classes, and methods for working with
 //
 // Four common collections in Java are set, list, queue, and map.
+//
+// ==============================
+//
+// Iterators
+//
+// is an object used to loop through collections
+//
+// are used to traverse elements in a collection and
+// help in accessing elements sequentially in a collection.
+//
+// can be used with sets, lists, and queues directly.
+//
+// For maps, the entrySet method is used to get a set of key-value pairs.
+//
+// The iterator can be used with the set of entries obtained from the map
+// to loop through its elements.
+//
+// While using iterators with maps may be effective,
+// there are more efficient ways to work with maps.
 public class CollectionDemos {
     public static void main(String[] args) {
         setDemo();
@@ -56,6 +75,15 @@ public class CollectionDemos {
 
         // To remove an entry from the map, use the "remove" method, providing the key.
         fruitCalories.remove("lemon");
+
+        // Iterator in Map
+        Set mapEntries = fruitCalories.entrySet();
+        var i = mapEntries.iterator();
+
+        while (i.hasNext()) {
+            Map.Entry entry = (Map.Entry) i.next();
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
 
         System.out.println(fruitCalories);
 
@@ -179,6 +207,17 @@ public class CollectionDemos {
         fruits.add("banana");
         fruits.add("lemon");
         fruits.add("apple");
+
+        // Iterator in Set
+        //
+        //
+        // problem:
+        // Use an iterator to loop through the
+        // Set of fruit
+        var i = fruits.iterator();
+        while (i.hasNext()) {
+            System.out.println(i.next());
+        }
 
         System.out.println(fruits);
 
