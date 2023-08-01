@@ -1,6 +1,7 @@
 package org.example.streams;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 // Streams
 //
@@ -34,6 +35,10 @@ import java.util.List;
 // - terminal       : return a result, close the stream,
 //                    and are the final operations on the stream.
 //                    (return a non-stream result)
+//
+// Streams in Java allow for functional programming,
+// and various intermediate operations (like filtering, sorting, and mapping)
+// can be combined together using chaining.
 public class StreamOperations {
     static List<String> veggies = List.of(
             "spinach",
@@ -64,6 +69,48 @@ public class StreamOperations {
 
         intReduceDemo();
         System.out.println();
+
+        collectDemo();
+        System.out.println();
+
+        multiOperationDemo();
+        System.out.println();
+    }
+
+    // This example demonstrates
+    // sorting the stream, filtering vegetables starting with "c",
+    // mapping the elements to uppercase, and then
+    // transforming each element to include "yummy" in front of it
+    // before printing the final results.
+    private static void multiOperationDemo() {
+        veggies.stream()
+                .sorted()
+                .filter(v -> v.startsWith("c"))
+                .map(String::toUpperCase)
+                .map(v -> v.transform(w -> "yummy " + w))
+                .forEach(System.out::println);
+    }
+
+    // collect method is used with streams in Java to
+    // assign the resulting stream to a collection of your choice.
+    //
+    // Various collection types can be used,
+    // such as `toList`, `toSet`, `toMap`, and `toUnmodifiableList`.
+    //
+    // does not modify the original collection but
+    // provides a new resulting collection that can be stored
+    // in a variable and used for further processing.
+    private static void collectDemo() {
+        List veggiesEndsWithS = veggies.stream()
+                .filter(v -> v.endsWith("s"))
+                .collect(Collectors.toList());
+
+        veggiesEndsWithS.forEach(System.out::println);
+
+        // peas
+        // green beans
+        // brussels sprouts
+        // carrots
     }
 
     // The reduce operation combines the elements of the stream into
