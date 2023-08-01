@@ -1,5 +1,7 @@
 package org.example.streams;
 
+import java.util.List;
+
 // Streams
 //
 // represent a sequence of elements from a data source
@@ -31,4 +33,48 @@ package org.example.streams;
 // - terminal       : return a result, close the stream,
 //                    and are the final operations on the stream.
 public class StreamOperations {
+    static List<String> veggies = List.of(
+            "spinach",
+            "cabbage",
+            "peas",
+            "green beans",
+            "brussels sprouts",
+            "carrots"
+    );
+
+    public static void main(String[] args) {
+        // Examples of intermediate operations
+        // include "anyMatch", "allMatch", and "filter".
+        anyMatchDemo();
+        System.out.println();
+
+        allMatchDemo();
+        System.out.println();
+
+        filterDemo();
+        System.out.println();
+    }
+
+    // "Filter" is an intermediate operation that
+    // narrows down the elements in the stream based on a given condition.
+    private static void filterDemo() {
+        veggies.stream()                        // cabbage
+                .filter(v -> v.startsWith("c")) // carrots
+                .forEach(System.out::println);  // -> Terminal operations
+    }
+
+    // The "allMatch" operation determines
+    // if all elements in the stream match a certain condition.
+    private static void allMatchDemo() {
+        boolean allMatches = veggies.stream().allMatch(v -> v.contains("s"));
+        System.out.println("allMatches: " + allMatches); // false
+    }
+
+    // The "anyMatch" operation checks
+    // if any element in the stream matches a given condition.
+    private static void anyMatchDemo() {
+        boolean anyMatches = veggies.stream().anyMatch(v -> v.contains(" "));
+        System.out.println("anyMatches: " + anyMatches); // true
+    }
+
 }
