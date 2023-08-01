@@ -30,8 +30,10 @@ import java.util.List;
 //
 // Streams offer 2 operations:
 // - intermediate   : perform operation and return resulting stream for further processing
+//                    (return a new modified stream)
 // - terminal       : return a result, close the stream,
 //                    and are the final operations on the stream.
+//                    (return a non-stream result)
 public class StreamOperations {
     static List<String> veggies = List.of(
             "spinach",
@@ -53,6 +55,54 @@ public class StreamOperations {
 
         filterDemo();
         System.out.println();
+
+        mapDemo();
+        System.out.println();
+
+        reduceDemo();
+        System.out.println();
+
+        intReduceDemo();
+        System.out.println();
+    }
+
+    // The reduce operation combines the elements of the stream into
+    // a single value based on a binary operator.
+    //
+    // can be used to `concatenate` strings or sum integers in the stream.
+    //
+    // Reduce returns a single value of the same type as the elements in the stream.
+    //
+    // The identity value is used as the starting point for reduce operations.
+    //
+    private static void reduceDemo() {
+        System.out.println(
+                veggies.stream()
+                        .sorted()
+                        .reduce("", (a, b) -> a + " | " + b)
+        );
+
+        // | brussels sprouts | cabbage | carrots | green beans | peas | spinach
+    }
+
+    private static void intReduceDemo() {
+        List<Integer> numbers = List.of(2, 4, 6, 7, 8);
+        var sum = numbers.stream().reduce(0, (a, b) -> a + b);
+        System.out.println(sum); // 27
+    }
+
+    // The "map" operation returns a resulting stream with the transformed elements.
+    private static void mapDemo() {
+        veggies.stream()
+                .map(String::toUpperCase)
+                .forEach(System.out::println);
+
+        // SPINACH
+        // CABBAGE
+        // PEAS
+        // GREEN BEANS
+        // BRUSSELS SPROUTS
+        // CARROTS
     }
 
     // "Filter" is an intermediate operation that
