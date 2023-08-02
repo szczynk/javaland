@@ -76,6 +76,11 @@ public class MultipleExceptionHandling {
             System.out.println("Exception occurred: " + e.getMessage());
         } finally {
             // Close the file reader in a `finally` block to ensure resource closed
+            //
+            //
+            // problem:
+            // Close the File Reader
+            // Update the program to close the file reader
             if (fileReader != null) {
                 fileReader.close();
             }
