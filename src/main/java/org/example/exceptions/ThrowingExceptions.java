@@ -1,5 +1,10 @@
 package org.example.exceptions;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 // Throwing Exceptions
 //
 // Java allows us to flag errors within the code by "throwing exceptions".
@@ -36,5 +41,41 @@ public class ThrowingExceptions {
         }
 
         return hours * payRate;
+    }
+
+    // Rethrow Exceptions
+    //
+    // for this example, we can generate a new file without catch any exception
+    //
+    // there's no need for a try-catch block
+    // if the method intends to propagate / forward the exception to the calling code.
+    // the burden is transferred to whoever calls the method,
+    // and they can choose to handle it or propagate it further.
+    //
+    // if multiple exceptions can be thrown,
+    // a general Exception can be used as the catch-all
+    // using Polymorphism.
+    //
+    //  if the interface declares an exception,
+    //  the implementing class needs to follow the same declaration.
+    //  Overriding methods cannot add additional exceptions.
+    public static void rethrowException() throws IOException {
+        File file = new File("files/nonexistent.txt");
+        file.createNewFile(); // This line can throw an IOException
+        // If it throws an exception, it will be propagated to the calling code
+    }
+
+    public static void rethrowMultipleExceptions()
+            throws IOException, InputMismatchException {
+        File file = new File("files/nonexistent.txt");
+        file.createNewFile();
+    }
+
+    // Polymorphic throws statement
+    public static void rethrowExceptionPolymorphic()
+            throws Exception {
+        File file = new File("files/nonexistent.txt");
+        file.createNewFile();
+        Scanner fileReader = new Scanner(file);
     }
 }
