@@ -2,43 +2,52 @@ package org.example.exceptions;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-// Try With Resources
-//
-// declaration of resources that should be automatically closed
-// after the execution of a try block
-//
-// "Try with resources" is a better approach as it automatically closes
-// the declared resources after the try block execution,
-// providing more concise and effective resource management.
-//
-// When using "try with resources", the resources should
-// implement the "AutoClosable" interface for this automatic behavior to work.
-//
-// the syntax for The syntax for "try with resources" is
-// declaring the resources within the parentheses "()" after the try keyword.
-//
 // Multiple resources can be declared within the parentheses,
 // and they will all be closed automatically at the end of the try block.
+//
+// The auto-closable resources are automatically closed
+// in the reverse order of their declaration
+// within the try block (i.e., first in, last out).
+//
+// If the order of resource closure matters,
+// they can be arranged accordingly in the try-with-resources block.
 //
 //
 // problem:
 // Auto-close File Reader
-// Automatically close file reader within try block
 public class TryWithResources {
     public static void main(String[] args) {
         File inputFile = new File("files/numbers.txt");
+        File outputFile = new File("files/output.txt");
 
         try (
                 Scanner fileReader = new Scanner(inputFile);
+
+                // change the output of the program from printing to the console
+                // to writing the contents to a new file.
+                //
+                // PrintWriter is widely used for writing formatted text data
+                // to files, network sockets, or other output streams.
+                //
+                //
+                // problem:
+                // Print to File
+                // Change printer from System to PrintWriter.
+                // Auto-close both resources within try block
+                PrintWriter fileWriter = new PrintWriter(outputFile);
         ) {
             while (fileReader.hasNext()) {
-                System.out.println(fileReader.nextDouble());
+                // System.out.println(fileReader.nextDouble());
+
+                fileWriter.println(fileReader.nextDouble());
             }
         } catch (FileNotFoundException | InputMismatchException e) {
             System.out.println("Error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
