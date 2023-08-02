@@ -3,7 +3,7 @@
 0
 -1
 203
-not a number
 NaN
+not a number
 -5
 420

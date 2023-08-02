@@ -39,6 +39,12 @@ import java.util.Scanner;
 //
 // we can separate that multiple exception with a pipe "|".
 //
+// It's essential to close resources like file readers properly
+// to avoid resource leaks and ensure smooth resource management.
+//
+// Using the `finally` block to close resources is a way to guarantee cleanup,
+// but it may not handle exceptions ideally.
+//
 // best practices:
 // - use specific exception
 // - do not hide the exception
@@ -68,6 +74,11 @@ public class MultipleExceptionHandling {
             System.out.println("InputMismatch occurred: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Exception occurred: " + e.getMessage());
+        } finally {
+            // Close the file reader in a `finally` block to ensure resource closed
+            if (fileReader != null) {
+                fileReader.close();
+            }
         }
 
         System.out.println();
@@ -81,6 +92,10 @@ public class MultipleExceptionHandling {
         } catch (FileNotFoundException | InputMismatchException e) {
             System.out.println("Error occurred: " + e.getMessage());
             e.printStackTrace(); // prints a stack trace
+        } finally {
+            if (fileReader != null) {
+                fileReader.close();
+            }
         }
     }
 }
