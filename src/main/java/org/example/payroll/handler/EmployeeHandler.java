@@ -6,4 +6,8 @@ public interface EmployeeHandler {
     void add();
 
     void detail();
+
+    void update();
+
+    void delete();
 }

@@ -24,11 +24,13 @@ public class Helper {
         System.out.println("1. Tambah employee");
         System.out.println("2. Daftar employee");
         System.out.println("3. Detail employee");
-        System.out.println("4. Daftar salary");
-        System.out.println("5. Hitung payroll");
-        System.out.println("6. Daftar payroll");
-        System.out.println("7. Detail payroll");
-        System.out.println("8. Exit (x)\n");
+        System.out.println("4. Update employee");
+        System.out.println("5. Delete employee");
+        System.out.println("6. Daftar salary");
+        System.out.println("7. Hitung payroll");
+        System.out.println("8. Daftar payroll");
+        System.out.println("9. Detail payroll");
+        System.out.println("10. Exit (x)\n");
         System.out.println("Pilih Menu");
     }
 }

@@ -115,4 +115,93 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
             System.out.println("Employee with id " + employeeId + " not exist");
         }
     }
+
+    @Override
+    public void update(){
+        int employeeId;
+        System.out.print("employee id = ");
+        try {
+            employeeId = scanner.nextInt();
+        } catch (RuntimeException e) {
+            System.out.println("invalid employee id");
+            return;
+        }
+
+        scanner.nextLine();
+
+        System.out.print("name = ");
+        String name = scanner.nextLine();
+        if (name.isEmpty()) {
+            System.out.println("invalid name");
+            return;
+        }
+
+
+        System.out.print("gender (laki-laki (p) / perempuan (p)) = ");
+        String gender = scanner.nextLine().toLowerCase();
+        gender = switch (gender) {
+            case "l", "laki-laki" -> "laki-laki";
+            case "p", "perempuan" -> "perempuan";
+            default -> "";
+        };
+        if (gender.isEmpty()) {
+            System.out.println("invalid gender, laki-laki (p) / perempuan (p) only");
+            return;
+        }
+
+
+        int grade;
+        System.out.print("grade = ");
+        try {
+            grade = scanner.nextInt();
+        } catch (RuntimeException e) {
+            System.out.println("invalid married");
+            return;
+        }
+        if (grade < 1) {
+            System.out.println("invalid grade");
+            return;
+        }
+
+
+        boolean married;
+        System.out.print("married (true / false) = ");
+        try {
+            married = scanner.nextBoolean();
+        } catch (RuntimeException e) {
+            System.out.println("invalid married, true / false only");
+            return;
+        }
+
+
+        Employee employee = new Employee(name, gender, grade, married);
+
+        int oldEmployeeId = employeeService.update(employeeId, employee);
+
+        if (oldEmployeeId < 1) {
+            System.out.println("failed update employee, check your input");
+            return;
+        }
+
+        System.out.println("successfully update employee with id " + oldEmployeeId);
+    }
+
+    @Override
+    public void delete() {
+        int employeeId;
+        System.out.print("employee id = ");
+        try {
+            employeeId = scanner.nextInt();
+        } catch (RuntimeException e) {
+            System.out.println("invalid employee id");
+            return;
+        }
+
+        try {
+            employeeService.delete(employeeId);
+            System.out.println("successfully delete employee with id " + employeeId);
+        } catch (Exception e){
+            System.out.println("failed delete employee");
+        }
+    }
 }

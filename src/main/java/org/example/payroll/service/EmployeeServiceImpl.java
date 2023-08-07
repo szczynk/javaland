@@ -43,4 +43,27 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee detail(int id) {
         return employeeRepo.detail(id);
     }
+
+    @Override
+    public int update(int employeeId, Employee newEmployee) {
+        var salaries = salaryRepo.list();
+
+        boolean isValidGrade = false;
+        for (Salary salary : salaries) {
+            if (newEmployee.getGrade() == salary.getGrade()) {
+                isValidGrade = true;
+                break;
+            }
+        }
+        if (!isValidGrade) {
+            return -1;
+        }
+
+        return employeeRepo.update(employeeId, newEmployee);
+    }
+
+    @Override
+    public void delete(int employeeId) {
+        employeeRepo.delete(employeeId);
+    }
 }

@@ -10,4 +10,8 @@ public interface EmployeeRepo {
     int add(Employee employee);
 
     Employee detail(int id);
+
+    int update(int employeeId, Employee newEmployee);
+
+    void delete(int employeeId);
 }

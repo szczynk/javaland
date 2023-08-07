@@ -19,12 +19,12 @@ public class Main {
 
 
         Scanner scanner = new Scanner(System.in);
-        EmployeeHandler employeeHandler = new EmployeeCLIHandlerImpl(scanner,employeeService);
+        EmployeeHandler employeeHandler = new EmployeeCLIHandlerImpl(scanner, employeeService);
         SalaryHandler salaryHandler = new SalaryCLIHandlerImpl(salaryService);
-        PayrollHandler payrollHandler = new PayrollCLIHandlerImpl(scanner,payrollService);
+        PayrollHandler payrollHandler = new PayrollCLIHandlerImpl(scanner, payrollService);
 
 
-        Menu menu = new Menu(scanner,employeeHandler, salaryHandler, payrollHandler);
+        Menu menu = new Menu(scanner, employeeHandler, salaryHandler, payrollHandler);
         menu.show();
     }
 }

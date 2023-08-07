@@ -31,6 +31,28 @@ public class EmployeeInMemoryRepoImpl implements EmployeeRepo {
         return employees.get(idx);
     }
 
+    @Override
+    public int update(int employeeId, Employee newEmployee) {
+        int idx = getIdxById(employeeId);
+        var employees = list();
+
+        Employee oldEmployee = employees.get(idx);
+        oldEmployee.setName(newEmployee.getName());
+        oldEmployee.setGender(newEmployee.getGender());
+        oldEmployee.setGrade(newEmployee.getGrade());
+        oldEmployee.setMarried(newEmployee.getMarried());
+
+        return oldEmployee.getId();
+    }
+
+    @Override
+    public void delete(int employeeId) {
+        int idx = getIdxById(employeeId);
+        var employees = list();
+
+        employees.remove(idx);
+    }
+
     private int getIdxById(int id) {
         var employees = list();
         for (int i = 0; i < employees.size(); i++) {
