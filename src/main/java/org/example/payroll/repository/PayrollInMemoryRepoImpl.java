@@ -42,10 +42,10 @@ public class PayrollInMemoryRepoImpl implements PayrollRepo {
     }
 
     private int getLastID() {
-        var employees = list();
+        var payrolls = list();
 
         int tempId = 0;
-        for (Payroll payroll : employees) {
+        for (Payroll payroll : payrolls) {
             if (tempId < payroll.getId()) {
                 tempId = payroll.getId();
             }

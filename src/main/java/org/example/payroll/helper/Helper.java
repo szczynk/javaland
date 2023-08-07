@@ -8,9 +8,9 @@ public class Helper {
             if (os.contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } else {
-                // System.out.print("\033\143");
-                // System.out.flush();
-                Runtime.getRuntime().exec("clear");
+                System.out.print("\033\143");
+                System.out.flush();
+                // Runtime.getRuntime().exec("clear");
                 // new ProcessBuilder("clear").inheritIO().start().waitFor();
             }
 
@@ -23,11 +23,14 @@ public class Helper {
         System.out.println("Menu");
         System.out.println("1. Tambah employee");
         System.out.println("2. Daftar employee");
-        System.out.println("3. Daftar salary");
-        System.out.println("4. Hitung payroll");
-        System.out.println("5. Daftar payroll");
-        System.out.println("6. Detail payroll");
-        System.out.println("7. Exit\n");
+        System.out.println("3. Detail employee");
+        System.out.println("4. Update employee");
+        System.out.println("5. Delete employee");
+        System.out.println("6. Daftar salary");
+        System.out.println("7. Hitung payroll");
+        System.out.println("8. Daftar payroll");
+        System.out.println("9. Detail payroll");
+        System.out.println("10. Exit (x)\n");
         System.out.println("Pilih Menu");
     }
 }
