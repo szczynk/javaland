@@ -39,7 +39,7 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
         }
 
 
-        System.out.print("gender (laki-laki (p) / perempuan (p)) = ");
+        System.out.print("gender (laki-laki (l) / perempuan (p)) = ");
         String gender = scanner.nextLine().toLowerCase();
         gender = switch (gender) {
             case "l", "laki-laki" -> "laki-laki";
@@ -47,7 +47,7 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
             default -> "";
         };
         if (gender.isEmpty()) {
-            System.out.println("invalid gender, laki-laki (p) / perempuan (p) only");
+            System.out.println("invalid gender, laki-laki (l) / perempuan (p) only");
             return;
         }
 
@@ -85,7 +85,7 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
             return;
         }
 
-        System.out.println("successfully adding employee with id " + employeeId);
+        System.out.println("successfully adding employee with id " + employeeId + "\n");
     }
 
     public void detail() {
@@ -110,14 +110,14 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
             System.out.printf("| Gender\t\t | %s\t\t | Grade\t | %s\t |\n", employee.getGender(), employee.getGrade());
             System.out.println("|--------------------------------------------------------------------------------|");
             System.out.printf("| Married\t\t | %s\t\t | \t\t |\n", employee.getMarried());
-            System.out.println("|--------------------------------------------------------------------------------|");
+            System.out.println("|--------------------------------------------------------------------------------|\n");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Employee with id " + employeeId + " not exist");
         }
     }
 
     @Override
-    public void update(){
+    public void update() {
         int employeeId;
         System.out.print("employee id = ");
         try {
@@ -137,7 +137,7 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
         }
 
 
-        System.out.print("gender (laki-laki (p) / perempuan (p)) = ");
+        System.out.print("gender (laki-laki (l) / perempuan (p)) = ");
         String gender = scanner.nextLine().toLowerCase();
         gender = switch (gender) {
             case "l", "laki-laki" -> "laki-laki";
@@ -145,7 +145,7 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
             default -> "";
         };
         if (gender.isEmpty()) {
-            System.out.println("invalid gender, laki-laki (p) / perempuan (p) only");
+            System.out.println("invalid gender, laki-laki (l) / perempuan (p) only");
             return;
         }
 
@@ -183,10 +183,11 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
             return;
         }
 
-        System.out.println("successfully update employee with id " + oldEmployeeId);
+        System.out.println("successfully update employee with id " + oldEmployeeId + "\n");
     }
 
     @Override
+
     public void delete() {
         int employeeId;
         System.out.print("employee id = ");
@@ -199,8 +200,8 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
 
         try {
             employeeService.delete(employeeId);
-            System.out.println("successfully delete employee with id " + employeeId);
-        } catch (Exception e){
+            System.out.println("successfully delete employee with id " + employeeId + "\n");
+        } catch (Exception e) {
             System.out.println("failed delete employee");
         }
     }

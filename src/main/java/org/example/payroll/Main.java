@@ -8,9 +8,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        EmployeeRepo employeeRepo = new EmployeeInMemoryRepoImpl();
-        SalaryRepo salaryRepo = new SalaryInMemoryRepoImpl();
-        PayrollRepo payrollRepo = new PayrollInMemoryRepoImpl();
+        // EmployeeRepo employeeRepo = new EmployeeInMemoryRepoImpl();
+        // SalaryRepo salaryRepo = new SalaryInMemoryRepoImpl();
+        // PayrollRepo payrollRepo = new PayrollInMemoryRepoImpl();
+
+        EmployeeRepo employeeRepo = new EmployeeJSONRepoImpl();
+        SalaryRepo salaryRepo = new SalaryJSONRepoImpl();
+        PayrollRepo payrollRepo = new PayrollJSONRepoImpl();
 
 
         EmployeeService employeeService = new EmployeeServiceImpl(employeeRepo, salaryRepo);

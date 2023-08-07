@@ -7,6 +7,14 @@ public class Employee {
     private int grade;
     private boolean married;
 
+    public Employee() {
+        setId(0);
+        setName("");
+        setGender("");
+        setGrade(0);
+        setMarried(false);
+    }
+
     public Employee(String name, String gender, int grade, boolean married) {
         setName(name);
         setGender(gender);
@@ -60,5 +68,16 @@ public class Employee {
 
     public void setMarried(boolean married) {
         this.married = married;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", grade=" + grade +
+                ", married=" + married +
+                '}';
     }
 }
