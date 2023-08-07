@@ -18,4 +18,23 @@ public class SalaryInMemoryRepoImpl implements SalaryRepo {
     public List<Salary> list() {
         return salaries;
     }
+
+
+    @Override
+    public Salary detailByGrade(int grade) {
+        int idx = getIdxByGrade(grade);
+        var salaries = list();
+
+        return salaries.get(idx);
+    }
+
+    private int getIdxByGrade(int grade) {
+        var salaries = list();
+        for (int i = 0; i < salaries.size(); i++) {
+            if (grade == salaries.get(i).getGrade()) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

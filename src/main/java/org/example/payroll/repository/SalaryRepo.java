@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface SalaryRepo {
     List<Salary> list();
+
+    Salary detailByGrade(int grade);
 }

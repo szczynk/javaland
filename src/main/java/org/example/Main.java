@@ -16,4 +16,12 @@ public class Main {
             System.out.println("i = " + i);
         }
     }
+
+    // Add a Maven dependency
+    // 1. Open your POM in the editor.
+    // 2. Press `Alt + Insert` to open the Generate context menu.
+    // 3. From the context menu, select `Dependency`.
+    // 4. In the Maven Artifact Search tool window, in the search field,
+    //    start typing the name of your dependency.
+    //    In the list of results select the one you need and click `Add`.
 }

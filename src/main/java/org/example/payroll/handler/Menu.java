@@ -24,9 +24,9 @@ public class Menu {
         Helper.menuList();
 
         while (true) {
-            String menu = scanner.next();
+            String menu = scanner.nextLine();
 
-            if (menu.equals("7") || menu.equals("x")) {
+            if (menu.equals("8") || menu.equals("x")) {
                 Helper.clearTerminal();
                 scanner.close();
                 break;
@@ -34,26 +34,37 @@ public class Menu {
 
             switch (menu) {
                 case "1" -> {
+                    Helper.clearTerminal();
                     System.out.println("Tambah employee");
                     employeeHandler.add();
                 }
                 case "2" -> {
+                    Helper.clearTerminal();
                     System.out.println("Daftar employee");
                     employeeHandler.list();
                 }
                 case "3" -> {
+                    Helper.clearTerminal();
+                    System.out.println("Detail employee");
+                    employeeHandler.detail();
+                }
+                case "4" -> {
+                    Helper.clearTerminal();
                     System.out.println("Daftar salary");
                     salaryHandler.list();
                 }
-                case "4" -> {
+                case "5" -> {
+                    Helper.clearTerminal();
                     System.out.println("Hitung payroll");
                     payrollHandler.add();
                 }
-                case "5" -> {
+                case "6" -> {
+                    Helper.clearTerminal();
                     System.out.println("Daftar payroll");
                     payrollHandler.list();
                 }
-                case "6" -> {
+                case "7" -> {
+                    Helper.clearTerminal();
                     System.out.println("Detail payroll");
                     payrollHandler.detail();
                 }
