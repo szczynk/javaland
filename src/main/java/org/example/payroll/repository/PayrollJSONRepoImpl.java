@@ -12,7 +12,7 @@ import java.util.List;
 public class PayrollJSONRepoImpl implements PayrollRepo {
     private static final String FILE_PATH = "payroll.json";
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private List<Payroll> payrolls;
+    private final List<Payroll> payrolls;
 
     public PayrollJSONRepoImpl() {
         payrolls = decodeJSONFile();
@@ -20,22 +20,20 @@ public class PayrollJSONRepoImpl implements PayrollRepo {
 
     public static void main(String[] args) {
         var payrollRepo = new PayrollJSONRepoImpl();
-        System.out.println(payrollRepo.list().toString());
+        System.out.println(payrollRepo.list());
         payrollRepo.encodeJSONFile();
     }
 
     private List<Payroll> decodeJSONFile() {
-        File jsonFile = new File(FILE_PATH);
-
         try {
+            File jsonFile = new File(FILE_PATH);
+
             // Read JSON array from file into List<Payroll>
-            payrolls = objectMapper.readValue(jsonFile, new TypeReference<>() {
+            return objectMapper.readValue(jsonFile, new TypeReference<>() {
             });
-            return payrolls;
         } catch (IOException e) {
-            System.out.println(e.getMessage());
-            payrolls = new ArrayList<>();
-            return payrolls;
+            System.err.println("decodeJSONFile error: " + e.getMessage());
+            return new ArrayList<>();
         }
     }
 
@@ -46,7 +44,7 @@ public class PayrollJSONRepoImpl implements PayrollRepo {
             // Write List<Payroll> back to the file
             objectMapper.writeValue(jsonFile, payrolls);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.err.println("encodeJSONFile error: " + e.getMessage());
         }
     }
 

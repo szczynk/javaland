@@ -73,8 +73,18 @@ public class PayrollCLIHandlerImpl implements PayrollHandler {
 
         PayrollRequest payrollRequest = new PayrollRequest(employeeId, totalHariMasuk, totalHariTidakMasuk);
 
-        int payrollId = payrollService.add(payrollRequest);
-        System.out.println("successfully adding payroll with id " + payrollId);
+        try {
+            int payrollId = payrollService.add(payrollRequest);
+
+            if (payrollId < 1) {
+                System.out.println("failed adding payroll, check your input");
+                return;
+            }
+
+            System.out.println("successfully adding payroll with id " + payrollId);
+        } catch (Exception e) {
+            System.out.println("failed adding payroll, err: " + e.getMessage());
+        }
     }
 
     @Override
@@ -105,8 +115,9 @@ public class PayrollCLIHandlerImpl implements PayrollHandler {
             System.out.println("|--------------------------------------------------------------------------------|");
             System.out.printf("| Jumlah gaji bersih\t\t\t | %d\t\t\t\t |\n", payroll.getBasicSalary() + payroll.getAdditionalSalary() - payroll.getPayCut());
             System.out.println("|--------------------------------------------------------------------------------|");
-        } catch (IndexOutOfBoundsException e) {
+        } catch (Exception e) {
             System.out.println("Payroll with id " + payrollId + " not exist");
+            System.out.println("err: " + e.getMessage());
         }
     }
 }

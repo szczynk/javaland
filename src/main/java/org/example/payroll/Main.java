@@ -1,9 +1,11 @@
 package org.example.payroll;
 
+import org.example.payroll.helper.PostgresDataSource;
 import org.example.payroll.repository.*;
 import org.example.payroll.service.*;
 import org.example.payroll.handler.*;
 
+import javax.sql.DataSource;
 import java.util.Scanner;
 
 public class Main {
@@ -12,9 +14,15 @@ public class Main {
         // SalaryRepo salaryRepo = new SalaryInMemoryRepoImpl();
         // PayrollRepo payrollRepo = new PayrollInMemoryRepoImpl();
 
-        EmployeeRepo employeeRepo = new EmployeeJSONRepoImpl();
-        SalaryRepo salaryRepo = new SalaryJSONRepoImpl();
-        PayrollRepo payrollRepo = new PayrollJSONRepoImpl();
+        // EmployeeRepo employeeRepo = new EmployeeJSONRepoImpl();
+        // SalaryRepo salaryRepo = new SalaryJSONRepoImpl();
+        // PayrollRepo payrollRepo = new PayrollJSONRepoImpl();
+
+
+        DataSource dataSource = PostgresDataSource.getDataSource();
+        EmployeeRepo employeeRepo = new EmployeePostgresRepoImpl(dataSource);
+        SalaryRepo salaryRepo = new SalaryPostgresRepoImpl(dataSource);
+        PayrollRepo payrollRepo = new PayrollPostgresRepoImpl(dataSource);
 
 
         EmployeeService employeeService = new EmployeeServiceImpl(employeeRepo, salaryRepo);

@@ -78,14 +78,18 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
 
         Employee employee = new Employee(name, gender, grade, married);
 
-        int employeeId = employeeService.add(employee);
+        try {
+            int employeeId = employeeService.add(employee);
 
-        if (employeeId < 1) {
-            System.out.println("failed adding employee, check your input");
-            return;
+            if (employeeId < 1) {
+                System.out.println("failed adding employee, check your input");
+                return;
+            }
+
+            System.out.println("successfully adding employee with id " + employeeId + "\n");
+        } catch (Exception e) {
+            System.out.println("failed adding employee, err: " + e.getMessage());
         }
-
-        System.out.println("successfully adding employee with id " + employeeId + "\n");
     }
 
     public void detail() {
@@ -111,8 +115,9 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
             System.out.println("|--------------------------------------------------------------------------------|");
             System.out.printf("| Married\t\t | %s\t\t | \t\t |\n", employee.getMarried());
             System.out.println("|--------------------------------------------------------------------------------|\n");
-        } catch (IndexOutOfBoundsException e) {
+        } catch (Exception e) {
             System.out.println("Employee with id " + employeeId + " not exist");
+            System.out.println("err: " + e.getMessage());
         }
     }
 
@@ -176,14 +181,18 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
 
         Employee employee = new Employee(name, gender, grade, married);
 
-        int oldEmployeeId = employeeService.update(employeeId, employee);
+        try {
+            int oldEmployeeId = employeeService.update(employeeId, employee);
 
-        if (oldEmployeeId < 1) {
-            System.out.println("failed update employee, check your input");
-            return;
+            if (oldEmployeeId < 1) {
+                System.out.println("failed update employee, check your input");
+                return;
+            }
+
+            System.out.println("successfully update employee with id " + oldEmployeeId + "\n");
+        } catch (Exception e) {
+            System.out.println("failed update employee, err: " + e.getMessage());
         }
-
-        System.out.println("successfully update employee with id " + oldEmployeeId + "\n");
     }
 
     @Override
@@ -202,7 +211,7 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
             employeeService.delete(employeeId);
             System.out.println("successfully delete employee with id " + employeeId + "\n");
         } catch (Exception e) {
-            System.out.println("failed delete employee");
+            System.out.println("failed delete employee: " + e.getMessage());
         }
     }
 }
