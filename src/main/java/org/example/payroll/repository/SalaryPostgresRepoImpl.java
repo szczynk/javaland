@@ -19,6 +19,7 @@ public class SalaryPostgresRepoImpl implements SalaryRepo {
         DataSource dataSource = PostgresDataSource.getDataSource();
         var salaryRepo = new SalaryPostgresRepoImpl(dataSource);
         System.out.println(salaryRepo.list());
+        System.out.println(salaryRepo.detailByGrade(1));
     }
 
     @Override
@@ -33,13 +34,14 @@ public class SalaryPostgresRepoImpl implements SalaryRepo {
                 ResultSet resultSet = statement.executeQuery(sqlQuery);
         ) {
             while (resultSet.next()) {
-                Salary salary = new Salary();
-                salary.setId(resultSet.getInt("id"));
-                salary.setGrade(resultSet.getInt("grade"));
-                salary.setBasicSalary(resultSet.getLong("basic_salary"));
-                salary.setPayCut(resultSet.getLong("pay_cut"));
-                salary.setAllowance(resultSet.getLong("allowance"));
-                salary.setHeadOfFamily(resultSet.getLong("head_of_family"));
+                Salary salary = new Salary(
+                        resultSet.getInt("id"),
+                        resultSet.getInt("grade"),
+                        resultSet.getLong("basic_salary"),
+                        resultSet.getLong("pay_cut"),
+                        resultSet.getLong("allowance"),
+                        resultSet.getLong("head_of_family")
+                );
 
                 salaries.add(salary);
             }
