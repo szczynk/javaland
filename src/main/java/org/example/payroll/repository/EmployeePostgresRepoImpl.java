@@ -35,12 +35,13 @@ public class EmployeePostgresRepoImpl implements EmployeeRepo {
                 ResultSet resultSet = statement.executeQuery(sqlQuery);
         ) {
             while (resultSet.next()) {
-                Employee employee = new Employee();
-                employee.setId(resultSet.getInt("id"));
-                employee.setName(resultSet.getString("name"));
-                employee.setGender(resultSet.getString("gender"));
-                employee.setGrade(resultSet.getInt("grade"));
-                employee.setMarried(resultSet.getBoolean("married"));
+                Employee employee = new Employee(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("gender"),
+                        resultSet.getInt("grade"),
+                        resultSet.getBoolean("married")
+                );
 
                 employees.add(employee);
             }
