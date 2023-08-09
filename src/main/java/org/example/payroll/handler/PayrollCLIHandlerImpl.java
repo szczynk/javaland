@@ -83,7 +83,7 @@ public class PayrollCLIHandlerImpl implements PayrollHandler {
 
             System.out.println("successfully adding payroll with id " + payrollId);
         } catch (Exception e) {
-            System.out.println("failed adding payroll, check your input");
+            System.out.println("failed adding payroll, err: " + e.getMessage());
         }
     }
 
@@ -117,6 +117,7 @@ public class PayrollCLIHandlerImpl implements PayrollHandler {
             System.out.println("|--------------------------------------------------------------------------------|");
         } catch (Exception e) {
             System.out.println("Payroll with id " + payrollId + " not exist");
+            System.out.println("err: " + e.getMessage());
         }
     }
 }
