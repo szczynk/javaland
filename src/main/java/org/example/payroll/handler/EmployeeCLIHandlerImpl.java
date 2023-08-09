@@ -88,7 +88,7 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
 
             System.out.println("successfully adding employee with id " + employeeId + "\n");
         } catch (Exception e) {
-            System.out.println("failed adding employee, check your input");
+            System.out.println("failed adding employee, err: " + e.getMessage());
         }
     }
 
@@ -117,6 +117,7 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
             System.out.println("|--------------------------------------------------------------------------------|\n");
         } catch (Exception e) {
             System.out.println("Employee with id " + employeeId + " not exist");
+            System.out.println("err: " + e.getMessage());
         }
     }
 
@@ -190,7 +191,7 @@ public class EmployeeCLIHandlerImpl implements EmployeeHandler {
 
             System.out.println("successfully update employee with id " + oldEmployeeId + "\n");
         } catch (Exception e) {
-            System.out.println("failed update employee, check your input");
+            System.out.println("failed update employee, err: " + e.getMessage());
         }
     }
 
